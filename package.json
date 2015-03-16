@@ -1,0 +1,13 @@
+{
+  "name": "BuildPro",
+  "main": "index.html",
+  "description": "A cooperative app that enables team GTD and net-meeting",
+  "version": "0.1.0",
+  "keywords": [ "Cooperative", "GTD","Net-Meeting"],
+  "chromium-args":"--disable-direct-write",
+  "window":{
+  	"toolbar": false,
+    "frame": true,
+    "title": "BuildPro"
+  }
+}

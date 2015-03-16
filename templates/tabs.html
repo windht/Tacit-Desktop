@@ -1,0 +1,118 @@
+<ion-view>
+<div class="contact-container">
+    <ion-tabs class="tabs-icon-top">
+
+      <ion-tab title="Contacts" icon="ion-person">
+        <div class="bar bar-header item-input-inset">
+          <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="Search" ng-model="searchFriend">
+          </label>
+          <button class="button button-clear">
+            Cancel
+          </button>
+        </div>
+        <ion-content
+          class="has-header"
+          scrollbar-y="false"
+        >
+          <div 
+          class="animate-repeat friend-list" 
+          ng-repeat="friend in Friends.list | orderBy:'-loginStatus':false | filter:searchFriend as friendSearchResults  track by friend.index" 
+          ng-click="selectFriend(friend.index)"
+          ng-class="{'selected':Friends.selected==friend.index,'offline':!friend.loginStatus}"
+          >
+            <div class="friend-thumbnails"
+            contextMenu
+            >
+              <div class="friend-pic">
+                {{friend.name | limitTo:2 }}
+              </div>
+              <div class="friend-name">{{friend.name}}</div>
+              <div class="friend-last-sentence">{{Chat.record[friend.index].msg[Chat.record[friend.index].msg.length-1].content | limitTo:20}}</div>
+              <div class="friend-unread" ng-show="friend.unread!=0">{{friend.unread}}</div>
+            </div>
+
+          </div>
+
+          <div class="animate-repeat no-friends-found" ng-show="friendSearchResults.length==0">
+            No Friends Found
+          </div>
+        </ion-content>
+      </ion-tab>
+      <ion-tab title="Chats" icon="ion-chatbubbles">
+        <div class="bar bar-header item-input-inset">
+          <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="Search">
+          </label>
+          <button class="button button-clear">
+            Cancel
+          </button>
+        </div>
+      </ion-tab>
+      <ion-tab title="Settings" icon="ion-ios-cog">
+        <div class="bar bar-header">
+          
+          <div class="h1 title">Settings</div>
+          <button class="button button-clear button-positive">Edit</button>
+        </div>
+        <ion-content
+            scroll="true"
+            has-bouncing="true"
+            class="has-header"
+            scrollbar-y="false"
+        >
+            <div class="list">
+              <div class="divider-white"></div>
+              <div class="setting-item" ng-click="goto('tab.dash')">
+                General
+              </div>
+              <div class="setting-item">
+                User
+              </div>
+              <div class="setting-item">
+                Privacy
+              </div>
+              <div class="divider-white"></div>
+              <div class="setting-item">
+                About
+              </div>
+              <div class="setting-item">
+                Tacit FAQ
+              </div>
+              <div class="setting-item">
+                Ask for help
+              </div>
+              <button class="button button-assertive button-block" ng-click="logout()">Logout</button>
+             
+            </div>
+        </ion-content>
+      </ion-tab>
+    </ion-tabs>
+    <!-- <div class="tabs tabs-icon-top">
+      <a class="tab-item">
+        <i class="icon ion-ios-person-outline"></i>
+        Contacts
+      </a>
+      <a class="tab-item">
+        <i class="icon ion-chatbubbles"></i>
+        Chats
+      </a>
+      <a class="tab-item">
+        <i class="icon ion-ios-cog-outline"></i>
+        Settings
+      </a>
+    </div> -->
+</div>
+<div class="chat-container" ng-style="{width:(Device.width-320)+'px'}">
+    
+    <div class="bar bar-header">
+      <button class="button button-icon icon ion-navicon"></button>
+      <div class="h1 title">{{Friends.list[Chat.currentIndex].name}}</div>
+      <button class="button button-clear button-positive">Edit</button>
+    </div>
+    <ion-nav-view name="tabs"></ion-nav-view>
+</div>
+</ion-view>
+

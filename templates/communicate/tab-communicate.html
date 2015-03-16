@@ -1,0 +1,60 @@
+<ion-view>
+  	<ion-content>
+  		<ion-refresher
+	    pulling-text="刷新任务"
+	    on-refresh="refreshTask()">
+	  	</ion-refresher>
+   		<div class="list">
+   			<div class="item item-divider">
+		      我的任务
+		    </div>
+		    <a class="item item-icon-left">
+			    <i class="icon ion-hammer"></i>
+			    	近期任务
+			    <span class="item-note">
+			        {{Task.todo | recentTask}}
+			    </span>
+			</a>
+			<a class="item item-icon-left">
+			    <i class="icon ion-wrench"></i>
+			    	过期任务
+			    <span class="item-note">
+			        {{Task.todo | deadTask}}
+			    </span>
+			</a>
+			<a class="item item-icon-left">
+			    <i class="icon ion-settings"></i>
+			    	全部任务
+			    <span class="item-note">
+			        {{Task.todo.length}}
+			    </span>
+			</a>
+			<div class="item item-divider">
+		      团队消息
+		    </div>
+		    <a class="item item-icon-left">
+				<i class="icon ion-android-wifi"></i>
+				新分配商榷
+				<span class="badge badge-assertive">0</span>
+			</a>
+			<a class="item item-icon-left">
+				<i class="icon ion-ios-eye-outline"></i>
+				提醒我关注
+				<span class="badge badge-assertive">0</span>
+			</a>
+			<div class="item item-divider">
+		      我的团队
+		    </div>
+		    <!-- <a class="item item-thumbnail-left" ng-click="goto('tab.meeting')">
+		      <img ng-src="{{headsrc}}">
+		      <h2>新的会议邀请！</h2>
+		      <p>来自于蔡志斌</p>
+		    </a> -->
+		    <a class="item item-icon-left" ng-click="goto('tab.team')">
+				<i class="icon ion-android-contacts"></i>
+				乐道团队
+			</a>
+		    
+		</div>
+   </ion-content>
+</ion-view>

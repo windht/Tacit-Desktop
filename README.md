@@ -1,5 +1,7 @@
 # Tacit-Desktop
-A telegram-like chat application built with node-webkit
+A telegram-like chat application built with node-webkit.
+
+This app is going to be rewrite with angular 2 and electron.
 
 # Desktop across Mac,Windows,Linux
 You should try [node-webkit](https://github.com/nwjs/nw.js"), this amazing project gives you the power to develop all-platform apps.
@@ -21,7 +23,7 @@ You should try [node-webkit](https://github.com/nwjs/nw.js"), this amazing proje
 # To run
 Simply download and unzip the files, after that, go into the directory and use:
 
-    npm install lowdb
+    npm install
  
 The reason for a incomplete zip is that I didn't include any node_modules for easier download and upload.
 
